@@ -1,5 +1,3 @@
 library telegram_logger;
 
-class TelegramLogger {
-  void log(String text) => ();
-}
+export 'src/telegram_logger.dart';
