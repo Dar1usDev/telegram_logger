@@ -19,7 +19,7 @@ class _Client implements Client {
   String? baseUrl;
 
   @override
-  Future<UserDto> getBotInfo() async {
+  Future<UserDto> getBotInfo({required String token}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -32,7 +32,7 @@ class _Client implements Client {
     )
             .compose(
               _dio.options,
-              'bot{token}/getMe',
+              'bot${token}/getMe',
               queryParameters: queryParameters,
               data: _data,
             )

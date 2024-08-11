@@ -2,7 +2,7 @@ import 'package:telegram_logger/src/telegram_logger.dart';
 
 extension UtilMethods on TelegramLogger {
   /// Gets bot info | check connection
-  Future<void> getBotInfo(String text) async {
+  Future<void> getBotInfo() async {
     try {
       final user = await repository.getBotInfo();
       debugLogger.i('Telegram bot info:\n$user');

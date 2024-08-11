@@ -9,7 +9,9 @@ abstract class Client {
   factory Client(Dio dio) = _Client;
 
   @GET('bot{token}/getMe')
-  Future<UserDto> getBotInfo();
+  Future<UserDto> getBotInfo({
+    @Path('token') required String token,
+  });
 
   @POST('bot{token}/sendMessage')
   Future<void> sendMessage({
