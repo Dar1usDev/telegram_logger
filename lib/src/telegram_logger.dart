@@ -24,7 +24,7 @@ class TelegramLogger {
     required String botToken,
 
     /// Telegram chat id
-    required String chatId, // 2198841658/2
+    required String chatId,
     this.timeoutTimeMilliseconds = 120000,
   }) {
     _bot = BotParams(botToken: botToken, chatId: chatId);

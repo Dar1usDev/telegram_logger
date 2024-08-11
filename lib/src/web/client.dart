@@ -19,7 +19,7 @@ abstract class Client {
 //     'https://api.telegram.org/bot$_botToken/sendMessage',
 //   ),
 //   body: {
-//     'chat_id': '-4226463626',
+//     'chat_id': '',
 //     'text': text,
 //   },
 // );

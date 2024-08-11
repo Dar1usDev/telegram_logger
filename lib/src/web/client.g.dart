@@ -19,7 +19,7 @@ class _Client implements Client {
   String? baseUrl;
 
   @override
-  Future<void> sendMessage({
+  Future<dynamic> sendMessage({
     required String token,
     required MessageDto message,
   }) async {
@@ -28,7 +28,7 @@ class _Client implements Client {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(message.toJson());
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -44,6 +44,8 @@ class _Client implements Client {
           _dio.options.baseUrl,
           baseUrl,
         ))));
+    final _value = _result.data;
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
