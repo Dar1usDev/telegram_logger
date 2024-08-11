@@ -1,6 +1,6 @@
 import 'package:telegram_logger/src/telegram_logger.dart';
 
-extension UtilMethods on TelegramLogger {
+extension on TelegramLogger {
   /// Gets bot info | check connection
   Future<void> getBotInfo(String text) async {
     try {
