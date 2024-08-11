@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:telegram_logger/src/telegram_logger.dart';
 import 'package:telegram_logger/src/utils/formatter.dart';
 
-extension on TelegramLogger {
+extension SendMethods on TelegramLogger {
   /// Sends text
   Future<void> sendText(String text) async {
     await _sendSplittedMessage(text);
