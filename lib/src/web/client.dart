@@ -13,16 +13,6 @@ abstract class Client {
     @Path('token') required String token,
     @Body() required MessageDto message,
   });
-
-// await http.post(
-//   Uri.parse(
-//     'https://api.telegram.org/bot$_botToken/sendMessage',
-//   ),
-//   body: {
-//     'chat_id': '',
-//     'text': text,
-//   },
-// );
 }
 
 class DioFactory {

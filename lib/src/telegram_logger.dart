@@ -45,7 +45,6 @@ class TelegramLogger {
   }
 
   Future<void> _sendSplittedMessage(String text) async {
-    debugLogger.i('_sendSplittedMessage');
     const maxMessageLength = 4096;
     for (var i = 0; i < text.length; i += maxMessageLength) {
       final msgForTelegram = text.substring(i, min(i + maxMessageLength, text.length));
@@ -55,11 +54,9 @@ class TelegramLogger {
 
   Future<void> _sendMessage(String text) async {
     try {
-      debugLogger.i('send try');
-      final result = await repository.sendMessage(text);
-      debugLogger.i('send successfully\n$result');
+      await repository.sendMessage(text);
     } catch (ex, st) {
-      debugLogger.e('telegram bot unavailable', error: ex, stackTrace: st);
+      debugLogger.e('tg logging error', error: ex, stackTrace: st);
     }
   }
 }
