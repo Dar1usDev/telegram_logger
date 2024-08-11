@@ -16,20 +16,31 @@ know whether this package might be useful for them.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Implementation of some Telegram API methods for debug logging to Telegram bots
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+
+```
+dependencies:
+    telegram_logger:
+        git:
+            url: https: //github.com/Dar1usDev/telegram_logger.git
+            ? ref: e6b4ae1
+```
 
 ## Usage
 
 TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
-```dart
-const like = 'sample';
+Usage example:
+
+```
+final telegramLogger = TelegramLogger(botToken: 'yourBotKey', chatId: 'chatId');
+
+await logger.sendText('Test message');
 ```
 
 ## Additional information

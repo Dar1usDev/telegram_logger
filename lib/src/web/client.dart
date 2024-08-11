@@ -8,8 +8,11 @@ part 'client.g.dart';
 abstract class Client {
   factory Client(Dio dio) = _Client;
 
+  @GET('bot{token}/getMe')
+  Future<UserDto> getBotInfo();
+
   @POST('bot{token}/sendMessage')
-  Future<dynamic> sendMessage({
+  Future<void> sendMessage({
     @Path('token') required String token,
     @Body() required MessageDto message,
   });

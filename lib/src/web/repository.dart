@@ -11,6 +11,8 @@ class MessageRepository {
     required this.bot,
   });
 
+  Future<UserDto> getBotInfo() => client.getBotInfo();
+
   Future<void> sendMessage(
     String text,
   ) async {

@@ -6,13 +6,34 @@ class BotParams {
   /// Telegram bot token
   final String botToken;
 
-  /// Telegram bot token
+  /// Telegram chat id
   final String chatId;
 
   const BotParams({
     required this.botToken,
     required this.chatId,
   });
+}
+
+@JsonSerializable()
+class UserDto {
+  final String id;
+  @JsonKey(name: 'is_bot')
+  final bool isBot;
+  final String? username;
+
+  UserDto(
+    this.id,
+    this.isBot,
+    this.username,
+  );
+
+  factory UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserDtoToJson(this);
+
+  @override
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: false)

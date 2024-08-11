@@ -19,7 +19,34 @@ class _Client implements Client {
   String? baseUrl;
 
   @override
-  Future<dynamic> sendMessage({
+  Future<UserDto> getBotInfo() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<UserDto>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'bot{token}/getMe',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = UserDto.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<void> sendMessage({
     required String token,
     required MessageDto message,
   }) async {
@@ -28,7 +55,7 @@ class _Client implements Client {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(message.toJson());
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+    await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -44,8 +71,6 @@ class _Client implements Client {
           _dio.options.baseUrl,
           baseUrl,
         ))));
-    final _value = _result.data;
-    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
