@@ -19,13 +19,13 @@ class _Client implements Client {
   String? baseUrl;
 
   @override
-  Future<UserDto> getBotInfo({required String token}) async {
+  Future<ResponseDto> getBotInfo({required String token}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<UserDto>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseDto>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -41,12 +41,12 @@ class _Client implements Client {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = UserDto.fromJson(_result.data!);
+    final _value = ResponseDto.fromJson(_result.data!);
     return _value;
   }
 
   @override
-  Future<void> sendMessage({
+  Future<ResponseDto> sendMessage({
     required String token,
     required MessageDto message,
   }) async {
@@ -55,22 +55,25 @@ class _Client implements Client {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(message.toJson());
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseDto>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'bot${token}/sendMessage',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
+            .compose(
+              _dio.options,
+              'bot${token}/sendMessage',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = ResponseDto.fromJson(_result.data!);
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

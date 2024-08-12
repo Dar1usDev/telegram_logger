@@ -11,17 +11,16 @@ class MessageRepository {
     required this.bot,
   });
 
-  Future<UserDto> getBotInfo() => client.getBotInfo(token: bot.botToken);
+  Future<ResponseDto> getBotInfo() => client.getBotInfo(token: bot.botToken);
 
-  Future<void> sendMessage(
+  Future<ResponseDto> sendMessage(
     String text,
-  ) async {
-    await client.sendMessage(
-      token: bot.botToken,
-      message: MessageDto(
-        chatId: bot.chatId,
-        text: text,
-      ),
-    );
-  }
+  ) =>
+      client.sendMessage(
+        token: bot.botToken,
+        message: MessageDto(
+          chatId: bot.chatId,
+          text: text,
+        ),
+      );
 }
