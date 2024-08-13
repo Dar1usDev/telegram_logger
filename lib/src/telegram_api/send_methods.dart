@@ -23,7 +23,6 @@ extension SendMethods on TelegramLogger {
         _debugLogger.i('Message:\n${response.result}');
       } catch (ex, st) {
         _debugLogger.e('Send message error', er: ex, st: st);
-        await sendDioException(ex as DioException);
       }
     }
   }

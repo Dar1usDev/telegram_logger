@@ -24,9 +24,9 @@ class Formatter {
   }) {
     String header = '';
     data.forEach((String k, String? v) {
-      header = '$header\n$k $v';
+      header = '$header$k${v == null ? '' : ' :$v'}\n';
     });
-    header = '$header\n\n';
+    header = '$header\n';
     return header;
   }
 
