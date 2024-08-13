@@ -37,11 +37,11 @@ class TelegramLogger {
   /// <message text>
   final Map<String, String?>? data;
 
-  /// If [true] log debug info to console
+  /// If [True], log responses to console
   /// [False] by default
   final bool printResponses;
 
-  /// If [true] log debug info to console
+  /// If [True], log errors to console
   /// [True] by default
   final bool printErrors;
 
