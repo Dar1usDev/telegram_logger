@@ -37,7 +37,7 @@ class ResponseDto {
   final String? description;
   @JsonKey(name: 'error_code')
   final int? errorCode;
-  final String? result;
+  final Map<String, dynamic>? result;
 
   ResponseDto(
     this.ok,

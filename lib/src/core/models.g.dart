@@ -16,7 +16,7 @@ ResponseDto _$ResponseDtoFromJson(Map<String, dynamic> json) => ResponseDto(
       json['ok'] as bool,
       json['description'] as String?,
       (json['error_code'] as num?)?.toInt(),
-      json['result'] as String?,
+      json['result'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$ResponseDtoToJson(ResponseDto instance) =>
