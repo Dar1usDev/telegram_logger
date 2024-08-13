@@ -10,6 +10,7 @@ Map<String, dynamic> _$MessageDtoToJson(MessageDto instance) =>
     <String, dynamic>{
       'chat_id': instance.chatId,
       'text': instance.text,
+      'message_thread_id': instance.threadId,
     };
 
 ResponseDto _$ResponseDtoFromJson(Map<String, dynamic> json) => ResponseDto(
