@@ -24,7 +24,7 @@ class DebugLogger {
     _logger.i(text);
   }
 
-  /// Logs errors
+  /// Logs error
   void e(String text, {Object? er, StackTrace? st}) {
     if (!printErrors) {
       return;

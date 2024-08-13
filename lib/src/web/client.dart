@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:telegram_logger/src/core/models.dart';
+import 'package:telegram_logger/src/models/message.dart';
+import 'package:telegram_logger/src/models/response.dart';
 
 part 'client.g.dart';
 

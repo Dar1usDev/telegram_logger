@@ -3,7 +3,7 @@ library telegram_logger;
 import 'dart:math';
 
 import 'package:dio/dio.dart';
-import 'package:telegram_logger/src/core/models.dart';
+import 'package:telegram_logger/src/models/bot.dart';
 import 'package:telegram_logger/src/utils/debug_logger.dart';
 import 'package:telegram_logger/src/utils/formatter.dart';
 import 'package:telegram_logger/src/web/client.dart';
@@ -39,7 +39,7 @@ class TelegramLogger {
     required String botToken,
 
     /// Telegram chat id (ex. -1001234567890)
-    /// Can include thread id at the end {chatId_1234}
+    /// Can include thread id {ex. chatId_1234}
     required String chatId,
     this.printResponses = false,
     this.printErrors = true,
