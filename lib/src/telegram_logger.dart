@@ -9,8 +9,8 @@ import 'package:telegram_logger/src/utils/formatter.dart';
 import 'package:telegram_logger/src/web/client.dart';
 import 'package:telegram_logger/src/web/repository.dart';
 
-part 'telegram_api/send_methods.dart';
-part 'telegram_api/util_methods.dart';
+part 'extensions/send_methods.dart';
+part 'extensions/util_methods.dart';
 
 class TelegramLogger {
   /// Telegram params
