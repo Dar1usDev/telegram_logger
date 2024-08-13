@@ -19,18 +19,25 @@ class Formatter {
     return msg;
   }
 
+  static String formatHeader({
+    required Map<String, String?> data,
+  }) {
+    String header = '';
+    data.forEach((String k, String? v) {
+      header = '$header\n$k $v';
+    });
+    header = '$header\n\n';
+    return header;
+  }
+
   static String formatDioException({
     required DioException ex,
-    String? version,
-    String? userId,
   }) {
     final options = ex.requestOptions;
     final response = ex.response!;
     final headers = response.headers.map.entries;
 
-    final msg = 'Version: $version\n'
-        'User id: $userId\n\n'
-        '*** Request ***\n'
+    final msg = '*** Request ***\n'
         '${_printKV('uri', options.uri)}'
         '${_printKV('method', options.method)}'
         '${_printKV('responseType', options.responseType.toString())}'

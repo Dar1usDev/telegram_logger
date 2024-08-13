@@ -22,6 +22,21 @@ class TelegramLogger {
   /// Console logger
   late final DebugLogger _debugLogger;
 
+  /// Telegram bot token
+  final String botToken;
+
+  /// Telegram chat id (ex. -1001234567890)
+  /// Can include thread id {ex. chatId_1234}
+  final String chatId;
+
+  /// Additional info that's printed as a header for each message
+  /// ex.:
+  /// App version: x.y.z
+  /// User id: 1234
+  ///
+  /// <message text>
+  final Map<String, String?>? data;
+
   /// If [true] log debug info to console
   /// [False] by default
   final bool printResponses;
@@ -35,17 +50,14 @@ class TelegramLogger {
   final int timeoutTimeMilliseconds;
 
   TelegramLogger({
-    /// Telegram bot token
-    required String botToken,
-
-    /// Telegram chat id (ex. -1001234567890)
-    /// Can include thread id {ex. chatId_1234}
-    required String chatId,
+    required this.botToken,
+    required this.chatId,
+    this.data,
     this.printResponses = false,
     this.printErrors = true,
     this.timeoutTimeMilliseconds = 120000,
   }) {
-    _bot = BotParams(botToken: botToken, chatId: chatId);
+    _bot = BotParams(botToken: botToken, chatId: chatId, data: data);
 
     final dio = DioFactory.newInstance(timeoutTimeMilliseconds: timeoutTimeMilliseconds);
     final client = Client(dio);

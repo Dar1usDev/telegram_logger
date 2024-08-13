@@ -3,12 +3,14 @@ part of '../telegram_logger.dart';
 extension SendMethods on TelegramLogger {
   /// Sends text
   Future<void> sendText(String text) async {
-    await _sendMessage(text);
+    final header = data == null ? '' : Formatter.formatHeader(data: data!);
+    await _sendMessage('$header$text');
   }
 
   /// Sends formatted DioException
   Future<void> sendDioException(DioException ex) async {
-    await _sendMessage(Formatter.formatDioException(ex: ex));
+    final header = data == null ? '' : Formatter.formatHeader(data: data!);
+    await _sendMessage('$header${Formatter.formatDioException(ex: ex)}');
   }
 
   /// Splits text by 4096 symbols and sends it
