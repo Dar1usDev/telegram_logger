@@ -13,7 +13,7 @@ Add lines like this to your package's pubspec.yaml (and run an implicit flutter 
 dependencies:
     telegram_logger:
         git:
-            url: https://github.com/Dar1usDev/telegram_logger.git
+            url: https://git<...>.com/<...>/telegram_logger.git
             ref: <commit>|<branch name>
 ```
 
@@ -34,3 +34,5 @@ await logger.sendText('Message');
 Thread id can be passed with _chatId_ after an underscore.
 
 ## Additional information
+![image](https://github.com/user-attachments/assets/e69eeca1-9e6e-40a3-959f-79dabc755ede)
+
