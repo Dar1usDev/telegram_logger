@@ -9,10 +9,18 @@ class BotParams {
   /// Telegram chat id
   final String chatId;
 
-  const BotParams({
+  /// Telegram thread id
+  String? threadId;
+
+  BotParams({
     required this.botToken,
     required this.chatId,
-  });
+  }) {
+    final id = chatId.split('_');
+    if (id.length > 1) {
+      threadId = id[1];
+    }
+  }
 }
 
 /// Sending message dto
@@ -21,10 +29,13 @@ class MessageDto {
   @JsonKey(name: 'chat_id')
   final String chatId;
   final String text;
+  @JsonKey(name: 'message_thread_id')
+  final String? threadId;
 
   MessageDto({
     required this.chatId,
     required this.text,
+    this.threadId,
   });
 
   Map<String, dynamic> toJson() => _$MessageDtoToJson(this);

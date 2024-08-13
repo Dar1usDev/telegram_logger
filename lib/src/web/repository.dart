@@ -20,6 +20,7 @@ class MessageRepository {
         token: bot.botToken,
         message: MessageDto(
           chatId: bot.chatId,
+          threadId: bot.threadId,
           text: text,
         ),
       );

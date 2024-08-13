@@ -38,7 +38,8 @@ class TelegramLogger {
     /// Telegram bot token
     required String botToken,
 
-    /// Telegram chat id
+    /// Telegram chat id (ex. -1001234567890)
+    /// Can include thread id at the end {chatId_1234}
     required String chatId,
     this.printResponses = false,
     this.printErrors = true,
