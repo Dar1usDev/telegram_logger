@@ -17,10 +17,12 @@ class Filter {
           if (exception.response == null) {
             return true;
           }
+          break;
         case DioExceptionFilter.codes400:
           if ('${exception.response?.statusCode}'.startsWith('4')) {
             return true;
           }
+          break;
       }
     }
     return false;
