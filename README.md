@@ -7,13 +7,13 @@ Implementation of some Telegram API methods for logging to Telegram bots
 
 ## Getting started
 
-Add lines like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+Add lines like these to your package's pubspec.yaml (and run an implicit flutter pub get):
 
 ```
 dependencies:
     telegram_logger:
         git:
-            url: https://git<...>.com/<...>/telegram_logger.git
+            url: https://<...>/telegram_logger.git
             ref: <commit>|<branch name>
 ```
 
@@ -26,9 +26,18 @@ final botToken = 'botToken';
 final chatId = '-1001234567890_1';
 final data = {'App version': 'x.y.z', 'User id': 'User1234567890'};
 
-final logger = TelegramLogger(botToken: botToken, chatId: chatId, data: data);
+final logger = TelegramLogger(
+      botToken: botToken,
+      chatId: chatId,
+      data: data,
+      dioFilters: {
+        DioExceptionFilter.codes400,
+        DioExceptionFilter.responseIsNull,
+      },
+    );
 
 await logger.sendText('Message');
+await logger.sendDioException(DioException(<...>));
 ```
 
 Thread id can be passed with _chatId_ after an underscore.
