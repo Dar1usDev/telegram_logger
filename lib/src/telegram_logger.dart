@@ -3,8 +3,9 @@ library telegram_logger;
 import 'dart:math';
 
 import 'package:dio/dio.dart';
-import 'package:telegram_logger/src/models/bot.dart';
+import 'package:telegram_logger/src/models/params.dart';
 import 'package:telegram_logger/src/utils/debug_logger.dart';
+import 'package:telegram_logger/src/utils/filters.dart';
 import 'package:telegram_logger/src/utils/formatter.dart';
 import 'package:telegram_logger/src/web/client.dart';
 import 'package:telegram_logger/src/web/repository.dart';
@@ -15,6 +16,9 @@ part 'extensions/util_methods.dart';
 class TelegramLogger {
   /// Telegram params
   late final BotParams _bot;
+
+  /// Additional logger params
+  late final LoggerParams _loggerParams;
 
   /// Repository with available Telegram API methods
   late final MessageRepository _repository;
@@ -49,6 +53,9 @@ class TelegramLogger {
   /// Default's 120000ms = 30s
   final int timeoutTimeMilliseconds;
 
+  /// List of filters for DioExceptions
+  final Set<DioExceptionFilter> dioFilters;
+
   TelegramLogger({
     required this.botToken,
     required this.chatId,
@@ -56,8 +63,11 @@ class TelegramLogger {
     this.printResponses = false,
     this.printErrors = true,
     this.timeoutTimeMilliseconds = 120000,
+    this.dioFilters = const {},
   }) {
-    _bot = BotParams(botToken: botToken, chatId: chatId, data: data);
+    _bot = BotParams(botToken: botToken, chatId: chatId);
+
+    _loggerParams = LoggerParams(data: data, dioFilters: dioFilters);
 
     final dio = DioFactory.newInstance(timeoutTimeMilliseconds: timeoutTimeMilliseconds);
     final client = Client(dio);

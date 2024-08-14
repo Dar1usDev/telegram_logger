@@ -9,6 +9,9 @@ extension SendMethods on TelegramLogger {
 
   /// Sends formatted DioException
   Future<void> sendDioException(DioException ex) async {
+    if (dioFilters.isNotEmpty && Filter.checkDioException(exception: ex, filters: dioFilters)) {
+      return;
+    }
     final header = data == null ? '' : Formatter.formatHeader(data: data!);
     await _sendMessage('$header${Formatter.formatDioException(ex: ex)}');
   }

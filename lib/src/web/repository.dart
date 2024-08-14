@@ -1,5 +1,5 @@
-import 'package:telegram_logger/src/models/bot.dart';
 import 'package:telegram_logger/src/models/message.dart';
+import 'package:telegram_logger/src/models/params.dart';
 import 'package:telegram_logger/src/models/response.dart';
 import 'package:telegram_logger/src/web/client.dart';
 
