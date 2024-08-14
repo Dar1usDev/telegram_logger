@@ -1,5 +1,7 @@
 Implementation of some Telegram API methods for logging to Telegram bots
 
+Dart ^3.0.5 (Flutter ^3.10.5)
+
 ## Features
 
 - Supports text and DioException formatting
@@ -14,7 +16,7 @@ dependencies:
     telegram_logger:
         git:
             url: https://<...>/telegram_logger.git
-            ref: <commit>|<branch name>
+            # ref: <commit>|<branch name>
 ```
 
 ## Usage
